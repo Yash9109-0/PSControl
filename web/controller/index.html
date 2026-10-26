@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<title>PS2 Party Pad — Controller</title>
+<link rel="stylesheet" href="./controller.css">
+</head>
+<body>
+<div id="app">
+
+  <!-- Join screen -->
+  <div id="join-screen" class="screen">
+    <div class="card">
+      <h1>PS2 Party Pad</h1>
+      <label for="join-name">Name</label>
+      <input type="text" id="join-name" placeholder="Your name" maxlength="16" autocomplete="off">
+      <div class="actions">
+        <button id="join-btn" class="btn-primary">Join</button>
+      </div>
+      <div id="join-error" class="error"></div>
+    </div>
+  </div>
+
+  <!-- Controller screen -->
+  <div id="controller-screen" class="screen hidden">
+
+    <!-- Portrait overlay -->
+    <div id="rotate-overlay" class="rotate-overlay">
+      <div class="rotate-icon">↻</div>
+      <p>Please rotate your phone<br>to landscape</p>
+    </div>
+    <!-- Homescreen banner (iPhone) -->
+    <div id="hs-banner" class="hs-banner" hidden>
+      <div style="background: #1a1a1a; border: 2px solid #444; border-radius: 12px; padding: 16px; color: #eee; text-align: center;">
+        <h3>Add to Home Screen</h3>
+        <p>Tap "Share" → "Add to Home Screen" for the best experience.</p>
+        <button id="hs-close" style="margin-top: 10px; padding: 6px 12px; background: #0af; color: #fff; border: none; border-radius: 6px; cursor: pointer;">Close</button>
+      </div>
+    </div>
+
+    <div id="gamepad">
+
+      <!-- Settings gear overlay -->
+      <div id="settings" class="settings-overlay hidden">
+        <div class="settings-panel">
+          <h3>Settings ⚙️</h3>
+          <button class="settings-close">✕</button>
+          <div class="settings-group">
+            <label>
+              <input type="checkbox" id="leftHand"> Left-handed layout
+            </label>
+          </div>
+          <div class="settings-group">
+            <label>Button size
+              <select id="buttonSize">
+                <option value="small">Small</option>
+                <option value="medium" selected>Medium</option>
+                <option value="large">Large</option>
+              </select>
+            </label>
+          </div>
+          <div class="settings-group">
+            <label>
+              <input type="checkbox" id="vibrate"> Vibration
+            </label>
+          </div>
+          <div class="settings-group">
+            <label>Dead zone
+              <input type="range" id="deadZone" min="0.05" max="0.3" step="0.01" value="0.18">
+              <span id="deadZoneValue">0.18</span>
+            </label>
+          </div>
+          <button id="settings-save" class="btn-primary">Save</button>
+        </div>
+      </div>
+
+      <!-- Reconnect banner -->
+      <div id="reconnect-banner" class="reconnect-banner" hidden>Reconnecting…</div>
+
+      <!-- Top shoulders: L1 L2 | R1 R2 -->
+      <div class="shoulder-row">
+        <button class="btn shoulder" data-button="l1">L1</button>
+        <button class="btn shoulder" data-button="l2">L2</button>
+        <div class="spacer"></div>
+        <button class="btn shoulder" data-button="r1">R1</button>
+        <button class="btn shoulder" data-button="r2">R2</button>
+      </div>
+
+      <div class="main-row">
+        <!-- Left column: D-pad + left stick -->
+        <div class="left-col">
+          <div class="dpad-wrap">
+            <div class="dpad">
+              <div class="d-btn" data-button="dpad-up">▲</div>
+              <div class="d-row">
+                <div class="d-btn" data-button="dpad-left">◀</div>
+                <div class="d-btn" data-button="dpad-right">▶</div>
+              </div>
+              <div class="d-btn" data-button="dpad-down">▼</div>
+            </div>
+          </div>
+          <div class="stick-wrap">
+            <div class="stick" id="stick-l"><div class="knob" id="knob-l"></div></div>
+          </div>
+        </div>
+
+        <!-- Center column: select/start, L3/R3, badge, ping -->
+        <div class="center-col">
+          <div class="center-controls">
+            <button class="btn small" data-button="select">Select</button>
+            <button class="btn small" data-button="start">Start</button>
+          </div>
+          <div class="stick-btns">
+            <button class="btn tiny" data-button="l3">L3</button>
+            <button class="btn tiny" data-button="r3">R3</button>
+          </div>
+          <div class="info-row">
+            <div class="badge p1" id="slot-badge">P1</div>
+            <div class="ping" id="ping-display">— ms</div>
+          </div>
+        </div>
+
+        <!-- Right column: right stick + face buttons -->
+        <div class="right-col">
+          <div class="stick-wrap">
+            <div class="stick" id="stick-r"><div class="knob" id="knob-r"></div></div>
+          </div>
+          <div class="face-wrap">
+            <div class="btn face" data-button="triangle">△</div>
+            <div class="face-row">
+              <div class="btn face" data-button="square">□</div>
+              <div class="btn face" data-button="circle">○</div>
+            </div>
+            <div class="btn face" data-button="cross">×</div>
+          </div>
+        </div>
+      </div>
+
+      <div id="status" class="status">Connecting…</div>
+      <div id="error" class="error"></div>
+    </div>
+  </div>
+</div>
+<script src="./controller.js"></script>
+</body>
+</html>

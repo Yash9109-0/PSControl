@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<title>PS2 Party Pad — Controller</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<div id="status">Connecting…</div>
+<div id="error"></div>
+<div class="pad">
+  <div class="stick" id="stick-l"><div class="knob"></div></div>
+  <div class="dpad">
+    <div class="d-btn" data-button="dpad-up">&#9650;</div>
+    <div style="grid-column:2; display:flex; gap:6px;">
+      <div class="d-btn" data-button="dpad-left">&#9664;</div>
+      <div class="d-btn" data-button="dpad-right">&#9654;</div>
+    </div>
+    <div class="d-btn" data-button="dpad-down">&#9660;</div>
+  </div>
+  <div class="action-buttons">
+    <div class="btn" data-button="triangle">&#9650;</div>
+    <div class="row"><div class="btn" data-button="square">&#9633;</div><div class="btn" data-button="circle">&#9675;</div></div>
+    <div class="btn" data-button="cross">&#9679;</div>
+  </div>
+  <div class="stick" id="stick-r"><div class="knob"></div></div>
+  <div class="shoulders">
+    <div class="btn" data-button="l1">L1</div><div class="btn" data-button="r1">R1</div>
+    <div class="btn" data-button="l2">L2</div><div class="btn" data-button="r2">R2</div>
+    <div class="btn" data-button="select">select</div><div class="btn" data-button="start">start</div>
+    <div class="btn small" data-button="l3">L3</div><div class="btn small" data-button="r3">R3</div>
+  </div>
+</div>
+<script src="/static/controller.js"></script>
+</body>
+</html>

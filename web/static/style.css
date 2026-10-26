@@ -1,0 +1,45 @@
+* { box-sizing: border-box; }
+html, body {
+  margin: 0; padding: 0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  background: #0b0c10; color: #e8e8e8;
+  text-align: center;
+}
+body { padding: 12px; }
+h1 { font-size: 20px; margin: 0 0 8px; }
+p.hint { font-size: 13px; color: #9aa3ad; margin: 6px 0; }
+#pc-info { font-size: 14px; margin: 10px 0; font-family: ui-monospace, monospace; }
+#pc-info b { color: #7dd3fc; }
+.slots { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: 16px; }
+.slot {
+  border: 1px solid #2a2f3a; border-radius: 12px; padding: 12px; background: #11141c;
+}
+.slot h2 { font-size: 15px; margin: 0 0 8px; }
+.qr { width: 140px; height: 140px; background: #fff; border-radius: 8px; display: block; margin: 0 auto 8px; }
+.status { font-size: 13px; margin: 4px 0; }
+.connected { color: #4ade80; }
+.disconnected { color: #f87171; }
+.driver-note { color: #f87171; font-size: 13px; margin-top: 10px; display: none; }
+
+/* ---------- phone controller ---------- */
+#status { font-weight: 600; font-size: 15px; margin: 8px 0 4px; }
+#error { color: #f87171; font-size: 13px; margin: 0 0 10px; min-height: 18px; }
+.pad { display: grid; grid-template-columns: 120px 1fr 120px; gap: 10px; max-width: 520px; margin: 0 auto; padding-bottom: 40px; }
+.pad > * { grid-column: span 3; }
+.stick { position: relative; width: 140px; height: 140px; border: 2px solid #3a4150; border-radius: 50%;
+  background: #161b24; touch-action: none; margin: 0 auto; }
+.knob { position: absolute; left: 50%; top: 50%; width: 44px; height: 44px; background: #7dd3fc;
+  border-radius: 50%; transform: translate(-50%, -50%); user-select: none; }
+.dpad { display: grid; grid-template-columns: 30px 1fr 30px; grid-template-rows: 30px 1fr 30px; gap: 6px; justify-items: center; }
+.d-btn { width: 44px; height: 44px; border: 1px solid #4a5568; border-radius: 8px; background: #161b24;
+  font-size: 20px; line-height: 42px; touch-action: none; user-select: none; -webkit-tap-highlight-color: transparent; }
+.action-buttons { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 44px 1fr 44px; gap: 10px;
+  justify-items: center; align-items: center; }
+.action-buttons > .row { grid-column: span 2; display: flex; gap: 10px; }
+.btn { width: 64px; height: 44px; border: 1px solid #4a5568; border-radius: 10px; background: #161b24;
+  font-size: 16px; line-height: 42px; touch-action: none; user-select: none; -webkit-tap-highlight-color: transparent; }
+.btn.small { width: 44px; font-size: 13px; }
+.shoulders { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; justify-items: center; }
+.shoulders .btn.small { width: 44px; font-size: 13px; }
+.btn.active, .d-btn.active { background: #7dd3fc; border-color: #7dd3fc; color: #000; }
+.hidden { display: none !important; }

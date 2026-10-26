@@ -1,0 +1,33 @@
+{
+  "name": "ps2-party-pad",
+  "version": "1.0.0",
+  "private": true,
+  "description": "PS2 Party Pad server — phone controllers over WebSocket to virtual gamepads",
+  "scripts": {
+    "start": "python -m server",
+    "dev": "python -m server",
+    "test": "python -m pytest tests/ -v",
+    "test:quiet": "python -m pytest tests/ -q",
+    "check": "python -m py_compile server/main.py server/net_utils.py server/rooms.py server/gamepad.py server/protocol.py server/validate.py server/config.py && node --check web/controller/controller.js && node --check web/host/host.js && python -m pytest tests/ -q",
+    "fake": "python tools/fake_client.py",
+    "fake:short": "python tools/fake_client.py --clients 2 --duration 10 --url ws://127.0.0.1:8000/ws/play",
+    "fake:4": "python tools/fake_client.py --clients 4 --duration 30 --url ws://127.0.0.1:8000/ws/play",
+    "postinstall": "echo \"PS2 Party Pad ready. Use: npm start (server) | npm test (tests) | npm run fake:short (test clients)\""
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "repository": {
+    "type": "git",
+    "url": "."
+  },
+  "keywords": [
+    "ps2",
+    "party-pad",
+    "gamepad",
+    "websocket",
+    "pcsx2",
+    "vigembus"
+  ],
+  "license": "MIT"
+}

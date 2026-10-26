@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PS2 Party Pad — Host</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<h1>PS2 Party Pad</h1>
+<p id="pc-info">PC address: <b id="ip">–</b> &nbsp; port: <b id="port">–</b></p>
+<p class="hint">Connect each phone to the same Wi-Fi, then scan its QR code with the phone camera.</p>
+<div class="slots" id="slots"></div>
+<div id="error"></div>
+<p class="hint driver-note" id="driver-note">
+  Virtual gamepad driver not detected. Install <a href="https://github.com/ViGEm/ViGEmBus">ViGEmBus</a> so button presses reach PCSX2, then restart the server.
+</p>
+<script src="/static/host.js"></script>
+</body>
+</html>

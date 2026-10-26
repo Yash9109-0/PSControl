@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>PS2 Party Pad — Host</title>
+<link rel="stylesheet" href="../static/style.css">
+<link rel="stylesheet" href="./host.css">
+</head>
+<body>
+<h1>PS2 Party Pad — Host</h1>
+
+<p id="pc-info">PC address: <b id="ip">–</b> &nbsp; port: <b id="port">–</b></p>
+
+<!-- Join info: large QR + join URL -->
+<div class="join-panel">
+  <div>
+    <img id="qr-big" class="qr-big" src="/api/qr.png" alt="QR code">
+    <div id="join-url" class="join-url">http://–:–/</div>
+    <p class="hint">Each phone scans this QR code (or opens the URL) to join as a controller.</p>
+  </div>
+</div>
+
+<!-- Gamepad status bar -->
+<div class="status-bar" id="status-bar">
+  <span class="dot" id="gamepad-dot"></span>
+  <span id="gamepad-text">Checking gamepads…</span>
+</div>
+
+<!-- Player cards -->
+<div class="cards" id="cards"></div>
+
+<div id="error" class="error"></div>
+
+<script src="./host.js"></script>
+</body>
+</html>

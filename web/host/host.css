@@ -1,0 +1,121 @@
+/* PS2 Party Pad host dashboard — plain CSS, TV/monitor friendly */
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0; padding: 0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  background: #0b0c10; color: #e8e8e8;
+  text-align: center;
+}
+body { padding: 16px; max-width: 1100px; margin: 0 auto; }
+h1 { font-size: 28px; margin: 0 0 12px; letter-spacing: 1px; }
+
+#pc-info { font-size: 15px; margin: 8px 0 18px; font-family: ui-monospace, monospace; }
+#pc-info b { color: #7dd3fc; }
+
+/* ---------- Join panel ---------- */
+.join-panel {
+  border: 2px solid #2a2f3a;
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 20px;
+  background: #11141c;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+.qr-big {
+  width: 260px; height: 260px;
+  background: #fff; border-radius: 10px;
+}
+.join-url {
+  font-family: ui-monospace, monospace;
+  font-size: 20px; font-weight: 700;
+  color: #7dd3fc;
+  word-break: break-all;
+  max-width: 100%;
+}
+
+/* ---------- Gamepad status bar ---------- */
+.status-bar {
+  display: flex; align-items: center; gap: 10px;
+  justify-content: center;
+  margin-bottom: 16px; padding: 10px 16px;
+  border-radius: 10px; background: #11141c;
+  border: 1px solid #2a2f3a; font-size: 14px;
+}
+.dot { width: 12px; height: 12px; border-radius: 50%; background: #6b7280; }
+.dot.ready { background: #22c55e; box-shadow: 0 0 10px #22c55e; }
+.dot.missing { background: #ef4444; box-shadow: 0 0 10px #ef4444; }
+
+/* ---------- Player cards ---------- */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.card {
+  border: 2px solid #2a2f3a;
+  border-radius: 14px;
+  padding: 16px;
+  background: #11141c;
+  text-align: center;
+  position: relative;
+}
+.card.empty { border-style: dashed; border-color: #4b5563; background: #0e1118; }
+.card.swap-pending { border-color: #7dd3fc; box-shadow: 0 0 16px rgba(125,211,252,0.25); }
+
+.card-header { display: flex; align-items: center; justify-content: center; gap: 8px; margin-bottom: 10px; }
+.badge {
+  width: 34px; height: 24px; border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 800; font-size: 14px; color: #000;
+}
+.badge.p1 { background: #0af; }
+.badge.p2 { background: #f44; }
+.badge.p3 { background: #4f4; color: #000; }
+.badge.p4 { background: #ff4; color: #000; }
+
+.card-name { font-size: 16px; font-weight: 600; margin: 4px 0 2px; word-break: break-word; }
+.card-status { font-size: 12px; margin: 0 0 10px; }
+.card-status.connected { color: #4ade80; }
+.card-status.disconnected { color: #f87171; }
+
+.ping { font-size: 13px; font-variant-numeric: tabular-nums; margin: 4px 0; }
+.ping.good { color: #4ade80; }
+.ping.warn { color: #fbbf24; }
+.ping.bad { color: #f87171; }
+.ping.na { color: #9ca3af; }
+
+.last-input { font-size: 11px; color: #9ca3af; margin-top: 6px; font-family: ui-monospace, monospace; }
+
+.card-actions { display: flex; gap: 8px; justify-content: center; margin-top: 12px; flex-wrap: wrap; }
+.btn {
+  padding: 8px 14px; font-size: 13px; font-weight: 600;
+  border: 1px solid #4a5568; border-radius: 8px;
+  background: #161b24; color: #e8e8e8; cursor: pointer;
+}
+.btn:active { background: #24303d; }
+.btn.primary { background: #0af; border-color: #0af; color: #000; }
+.btn.primary:active { background: #3bbbff; }
+.btn.danger { background: #7f1d1d; border-color: #7f1d1d; color: #fee2e2; }
+.btn.danger:active { background: #991b1b; }
+.btn.warn { background: #7c2d12; border-color: #7c2d12; color: #fed7aa; }
+.btn.warn:active { background: #c2410c; }
+.btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+/* Swap pending indicator */
+.swap-tag {
+  position: absolute; top: 8px; right: 8px;
+  background: #7dd3fc; color: #000; font-size: 11px; font-weight: 800;
+  padding: 2px 8px; border-radius: 10px; animation: pulse 1.5s infinite;
+}
+@keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.55; } }
+
+/* ---------- Misc ---------- */
+.error { color: #f87171; font-size: 13px; margin-top: 12px; min-height: 18px; }
+.hint { font-size: 13px; color: #9aa3ad; margin: 6px 0; }
+.hidden { display: none !important; }
