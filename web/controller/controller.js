@@ -313,6 +313,12 @@ function computeState() {
   // Apply dead zone to sticks
   let lx = stickL.x, ly = stickL.y;
   let rx = stickR.x, ry = stickR.y;
+  if (Math.hypot(lx, ly) < DEAD_ZONE * 100) { lx = 0; ly = 0; }
+  if (Math.hypot(rx, ry) < DEAD_ZONE * 100) { rx = 0; ry = 0; }
+
+  return { b, lx, ly, rx, ry };
+}
+
 // ---------- Stick pointer handling ----------
 function initStick(stickId, knobId, st) {
   const el = document.getElementById(stickId);
@@ -371,11 +377,6 @@ function drawStick(st) {
   let dy = (-st.y / 100) * maxOffset;
   st.knob.style.transform = `translate(calc(-50% + ${dx}px), calc(-50% + ${dy}px))`;
 }
-  if (Math.hypot(lx, ly) < DEAD_ZONE * 100) { lx = 0; ly = 0; }
-  if (Math.hypot(rx, ry) < DEAD_ZONE * 100) { rx = 0; ry = 0; }
-
-  return { b, lx, ly, rx, ry };
-}
 
 function releaseAllInput() {
   pressed.clear();
@@ -383,6 +384,7 @@ function releaseAllInput() {
   stickL.x = 0; stickL.y = 0; stickL.pid = null;
   stickR.x = 0; stickR.y = 0; stickR.pid = null;
   dpad.pid = null;
+}
 // ---------- D-pad pointer handling (slide between directions + diagonals) ----------
 function initDpad() {
   const el = document.querySelector('.dpad');
@@ -505,6 +507,8 @@ function init() {
   window.addEventListener('resize', checkOrient);
   checkOrient();
 
-  connectWs();
+  if (token) {
+    connectWs();
+  }
 }
 document.addEventListener('DOMContentLoaded', init);
